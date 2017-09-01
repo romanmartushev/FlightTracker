@@ -80,11 +80,11 @@ class FlightController extends Controller
 }';
         $first = $this->getFlights($MSPToDFW);
         $second = $this->getFlights($MSPToSEA);
-        $third = $this->getFlights($PDXToANC);
-        $date= Carbon::now();
+//        $third = $this->getFlights($PDXToANC);
+        $date= Carbon::now('CST');
 
 
-        return view('flightLayout')->withFirst($first)->withSecond($second)->withThird($third)->withDate($date);
+        return view('flightLayout')->withFirst($first)->withSecond($second)->withDate($date);
     }
 
     public function getFlights($postData){

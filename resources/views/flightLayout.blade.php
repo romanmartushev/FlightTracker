@@ -18,14 +18,16 @@
     <div>fare: {{explode("USD",$second[4])[1]}}</div>
 @stop
 
-@section('thirdFlight')
-    <h1>PDX TO ANC</h1>
-    <div>depAirline: {{$third[0]}}</div>
-    <div>depFlightNo: {{$third[1]}}</div>
-    <div>retAirline: {{$third[2]}}</div>
-    <div>retFlightNo: {{$third[3]}}</div>
-    <div>fare: {{explode("USD",$third[4])[1]}}</div>
-@stop
+{{--@section('thirdFlight')--}}
+    {{--@if($third)--}}
+        {{--<h1>PDX TO ANC</h1>--}}
+        {{--<div>depAirline: {{$third[0]}}</div>--}}
+        {{--<div>depFlightNo: {{$third[1]}}</div>--}}
+        {{--<div>retAirline: {{$third[2]}}</div>--}}
+        {{--<div>retFlightNo: {{$third[3]}}</div>--}}
+        {{--<div>fare: {{explode("USD",$third[4])[1]}}</div>--}}
+    {{--@endif--}}
+{{--@stop--}}
 @section('date')
     {{$date}}
 @stop
