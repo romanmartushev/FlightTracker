@@ -1,110 +1,108 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Roman
- * Date: 8/25/17
- * Time: 4:06 PM
- */
 
-namespace App\Http\Controllers;
-
+namespace App\Console\Commands;
 
 use App\Flights;
-use Carbon\Carbon;
+use Illuminate\Console\Command;
 
-class FlightController extends Controller
+class getFlightInfo extends Command
 {
-    public function flights(){
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'flights:getFlights';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Gets the flights';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     */
+    public function handle()
+    {
         $MSPToDFW = '{
-  "request": {
-    "passengers": {
-      "adultCount": 1
-    },
-    "slice": [
-      {
-        "origin": "MSP",
-        "destination": "DFW",
-        "date": "2017-11-14",
-        "maxStops": 0
-      },
-      {
-        "origin": "DFW",
-        "destination": "MSP",
-        "date": "2017-11-19",
-        "maxStops": 0
-      }
-    ]
-  }
-}';
+          "request": {
+            "passengers": {
+              "adultCount": 1
+            },
+            "slice": [
+              {
+                "origin": "MSP",
+                "destination": "DFW",
+                "date": "2017-11-14",
+                "maxStops": 0
+              },
+              {
+                "origin": "DFW",
+                "destination": "MSP",
+                "date": "2017-11-19",
+                "maxStops": 0
+              }
+            ]
+          }
+        }';
         $MSPToSEA = '{
-  "request": {
-    "passengers": {
-      "adultCount": 1
-    },
-    "slice": [
-      {
-        "origin": "MSP",
-        "destination": "SEA",
-        "date": "2017-11-14",
-        "maxStops": 0
-      },
-      {
-        "origin": "SEA",
-        "destination": "MSP",
-        "date": "2017-11-19",
-        "maxStops": 0
-      }
-    ]
-  }
-}';
+          "request": {
+            "passengers": {
+              "adultCount": 1
+            },
+            "slice": [
+              {
+                "origin": "MSP",
+                "destination": "SEA",
+                "date": "2017-11-14",
+                "maxStops": 0
+              },
+              {
+                "origin": "SEA",
+                "destination": "MSP",
+                "date": "2017-11-19",
+                "maxStops": 0
+              }
+            ]
+          }
+        }';
         $PDXToANC = '{
-  "request": {
-    "passengers": {
-      "adultCount": 1
-    },
-    "slice": [
-      {
-        "origin": "PDX",
-        "destination": "ANC",
-        "date": "2017-11-14",
-        "maxStops": 0
-      },
-      {
-        "origin": "ANC",
-        "destination": "PDX",
-        "date": "2017-11-19",
-        "maxStops": 0
-      }
-    ]
-  }
-}';
+          "request": {
+            "passengers": {
+              "adultCount": 1
+            },
+            "slice": [
+              {
+                "origin": "PDX",
+                "destination": "ANC",
+                "date": "2017-11-14",
+                "maxStops": 0
+              },
+              {
+                "origin": "ANC",
+                "destination": "PDX",
+                "date": "2017-11-19",
+                "maxStops": 0
+              }
+            ]
+          }
+        }';
         $first = $this->getFlights($MSPToDFW);
         $second = $this->getFlights($MSPToSEA);
-//        $third = $this->getFlights($PDXToANC);
-        $date= Carbon::now('CST');
-
-        return view('flightLayout')->withFirst($first)->withSecond($second)->withDate($date);
     }
-//    public function csv(){
-//        $file = file('flights.csv');
-//        foreach($file as $item){
-//            $array = explode(",",$item);
-//            $date = explode('/',$array[0]);
-//            $date = implode('-',$date);
-//            $time = $array[1][0].$array[1][1].$array[1][2].$array[1][3].$array[1][4].$array[1][5].$array[1][6].$array[1][7];
-//            $flight = new Flights();
-//            $flight->date = $date;
-//            $flight->time = $time;
-//            $flight->depAirline = $array[2];
-//            $flight->depFlightNo = $array[3];
-//            $flight->retAirline = $array[4];
-//            $flight->retFlightNo = $array[5];
-//            $flight->fare = $array[6];
-//            $flight->comment = '';
-//            $flight->save();
-//        }
-//    }
 
     public function getFlights($postData){
         $array = [];
@@ -155,7 +153,5 @@ class FlightController extends Controller
         $flight->fare = $fare;
         $flight->comment = '';
         $flight->save();
-
-        return $array1;
     }
 }
