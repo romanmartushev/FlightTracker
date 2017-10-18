@@ -15,3 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/flights/main','FlightController@flights');
+
+Route::get('/flights/csv','FlightController@csv');
