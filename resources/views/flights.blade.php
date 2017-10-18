@@ -7,7 +7,7 @@
 <div class="container">
     @yield('firstFlight')<br/><br/>
     @yield('secondFlight')<br/><br/>
-    {{--@yield('thirdFlight')<br/><br/>--}}
+    @yield('thirdFlight')<br/><br/>
     @yield('date')
 </div>
 </body>
