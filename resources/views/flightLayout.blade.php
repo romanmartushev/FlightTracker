@@ -6,7 +6,8 @@
     <div>depFlightNo: {{$first[1]}}</div>
     <div>retAirline: {{$first[2]}}</div>
     <div>retFlightNo: {{$first[3]}}</div>
-    <div>fare: {{explode("USD",$first[4])[1]}}</div>
+    <div>fare: ${{explode("USD",$first[4])[1]}}</div>
+    <hr/>
 @stop
 
 @section('secondFlight')
@@ -15,7 +16,8 @@
     <div>depFlightNo: {{$second[1]}}</div>
     <div>retAirline: {{$second[2]}}</div>
     <div>retFlightNo: {{$second[3]}}</div>
-    <div>fare: {{explode("USD",$second[4])[1]}}</div>
+    <div>fare: ${{explode("USD",$second[4])[1]}}</div>
+    <hr/>
 @stop
 
 @section('thirdFlight')
@@ -25,7 +27,8 @@
         <div>depFlightNo: {{$third[1]}}</div>
         <div>retAirline: {{$third[2]}}</div>
         <div>retFlightNo: {{$third[3]}}</div>
-        <div>fare: {{explode("USD",$third[4])[1]}}</div>
+        <div>fare: ${{explode("USD",$third[4])[1]}}</div>
+        <hr/>
     @endif
 @stop
 @section('date')
